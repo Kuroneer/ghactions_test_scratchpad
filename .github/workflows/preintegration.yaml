@@ -1,0 +1,14 @@
+name: Preintegration
+
+on:
+  push:
+    branches:
+      - '**'
+
+jobs:
+  preintegration:
+    name: Preintegration
+    runs-on: [self-hosted-org, linux, Telefonica]
+    steps:
+      - name: Test
+        run: sleep 10
