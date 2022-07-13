@@ -8,6 +8,7 @@ on:
 jobs:
   preintegration:
     name: Preintegration
+    runs-on: ubuntu-latest
     steps:
       - name: Test
         run: sleep 10
