@@ -6,6 +6,9 @@ on:
     types: [completed]
     branches: [main]
 
+env:
+  GITHUB_TOKEN: "${{ secrets.GITHUB_TOKEN }}"
+
 jobs:
   preintegration:
     name: Release
@@ -13,3 +16,13 @@ jobs:
     steps:
       - name: Release
         run: sleep 10
+
+      - name: Checkout
+        uses: actions/checkout@v2
+
+      - name: Tag
+        run: |
+          git remote set-url --push origin https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git
+          TAG=$(date)
+          git tag -m $TAG
+          git push origin $TAG
