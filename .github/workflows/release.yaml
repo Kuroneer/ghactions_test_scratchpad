@@ -1,0 +1,15 @@
+name: Release
+
+on:
+  workflow_run:
+    workflows: [Preintegration]
+    types: [completed]
+    branches: [main]
+
+jobs:
+  preintegration:
+    name: Release
+    runs-on: ubuntu-latest
+    steps:
+      - name: Release
+        run: sleep 10
