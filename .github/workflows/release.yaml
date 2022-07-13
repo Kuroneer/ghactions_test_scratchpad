@@ -23,6 +23,6 @@ jobs:
       - name: Tag
         run: |
           git remote set-url --push origin "https://${GITHUB_ACTOR}:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git"
-          TAG=$(date %s)
+          TAG=$(date -u %s)
           git tag "$TAG"
           git push origin "$TAG"
